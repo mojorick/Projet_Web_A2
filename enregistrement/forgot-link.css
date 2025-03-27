@@ -3,7 +3,7 @@
 
 body {
     font-family: Poppins, sans-serif;
-    background: linear-gradient(90deg,#ffffff ,#d4f2fa);
+    background: linear-gradient(90deg,#ffffff ,#93f593);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@ input {
     border-radius: 5px;
 }
 button {
-    background-color: #48a0cf;
+    background-color: #158515;
     color: white;
     border: none;
     padding: 10px;
@@ -42,7 +42,7 @@ button {
     font-weight: bold;
 }
 button:hover {
-    background-color: #48a0cf;
+    background-color: #1fc81f;
 }
 .message {
     margin-top: 10px;

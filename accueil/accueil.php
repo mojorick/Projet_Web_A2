@@ -12,9 +12,8 @@
 </head>
 <body>
     <?php include ("../head/entete.php"); ?>
-
     <!-- Hero Section -->
-     <section class="hero" style="background:linear-gradient(90deg,#ffffff ,#d4f2fa);">
+     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Trouvez le stage qui lancera <span>votre carrière</span></h1>
@@ -95,60 +94,60 @@
 
     
     <section class="features">
-        <div class="container">
-            <h2>Tout ce dont vous avez besoin pour trouver le stage parfait</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/search.svg" alt="Search">
-                    </div>
-                    <h3>Recherche avancée</h3>
-                    <p>Trouvez le stage parfait avec notre moteur de recherche intelligent</p>
-                    <ul class="feature-list">
-                        <li>Filtrage par compétences</li>
-                        <li>Recherche géographique</li>
-                        <li>Suggestions personnalisées</li>
-                    </ul>
+    <div class="container">
+        <h2>Tout ce dont vous avez besoin pour trouver le stage parfait</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/search.svg" alt="Search">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/star.svg" alt="Star">
-                    </div>
-                    <h3>Liste de souhaits</h3>
-                    <p>Sauvegardez vos offres préférées pour les retrouver facilement</p>
-                    <ul class="feature-list">
-                        <li>Organisation par catégories</li>
-                        <li>Notifications personnalisées</li>
-                        <li>Comparaison d'offres</li>
-                    </ul>
+                <h3>Recherche avancée</h3>
+                <p>Trouvez le stage parfait avec notre moteur de recherche intelligent</p>
+                <ul class="feature-list">
+                    <li>Filtrage par compétences</li>
+                    <li>Recherche géographique</li>
+                    <li>Suggestions personnalisées</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/star.svg" alt="Star">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/briefcase.svg" alt="Briefcase">
-                    </div>
-                    <h3>Candidature simplifiée</h3>
-                    <p>Postulez en quelques clics et suivez vos candidatures</p>
-                    <ul class="feature-list">
-                        <li>CV et LM personnalisés</li>
-                        <li>Suivi en temps réel</li>
-                        <li>Historique des candidatures</li>
-                    </ul>
+                <h3>Liste de souhaits</h3>
+                <p>Sauvegardez vos offres préférées pour les retrouver facilement</p>
+                <ul class="feature-list">
+                    <li>Organisation par catégories</li>
+                    <li>Notifications personnalisées</li>
+                    <li>Comparaison d'offres</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/briefcase.svg" alt="Briefcase">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/bar-chart.svg" alt="Chart">
-                    </div>
-                    <h3>Statistiques et analyses</h3>
-                    <p>Suivez les tendances et prenez des décisions éclairées</p>
-                    <ul class="feature-list">
-                        <li>Analyses du marché</li>
-                        <li>Taux de réussite</li>
-                        <li>Rapports détaillés</li>
-                    </ul>
+                <h3>Candidature simplifiée</h3>
+                <p>Postulez en quelques clics et suivez vos candidatures</p>
+                <ul class="feature-list">
+                    <li>CV et LM personnalisés</li>
+                    <li>Suivi en temps réel</li>
+                    <li>Historique des candidatures</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/bar-chart.svg" alt="Chart">
                 </div>
+                <h3>Statistiques et analyses</h3>
+                <p>Suivez les tendances et prenez des décisions éclairées</p>
+                <ul class="feature-list">
+                    <li>Analyses du marché</li>
+                    <li>Taux de réussite</li>
+                    <li>Rapports détaillés</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     
     <section class="categories">

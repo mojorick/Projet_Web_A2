@@ -12,7 +12,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(90deg,#ffffff ,#d4f2fa);
+    background: linear-gradient(90deg,#ffffff ,#93f593);
 }
 
 .container{
@@ -107,7 +107,7 @@ form{
 .btn{
     width: 100%;
     height: 48px;
-    background:#48a0cf;
+    background:#158515;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border: none;
@@ -115,6 +115,10 @@ form{
     font-size: 16px;
     color: #fff;
     font-weight: 600;
+}
+
+.btn:hover{
+    background: #1fc81f;
 }
 
 .container p{
@@ -152,7 +156,7 @@ form{
     border-radius: 150px;
     width: 300%;
     height: 100%;
-    background: #48a0cf;
+    background: #158515;
     z-index: 2;
     transition: 1.8s ease-in-out;
 }

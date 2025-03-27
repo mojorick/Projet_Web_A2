@@ -1,4 +1,3 @@
-// DOM Elements
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 const loginBtn = document.getElementById('loginBtn');
@@ -10,13 +9,14 @@ const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
 const installPwaButton = document.getElementById('installPwa');
 
-// Mobile menu toggle
+
 menuToggle?.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     mobileMenu?.classList.toggle('active');
+    document.body.classList.toggle('menu-open', mobileMenu?.classList.contains('active'));
 });
 
-// Modal handling
+
 function openModal(modal) {
     if (modal) {
         modal.classList.add('active');
@@ -41,19 +41,19 @@ modalCloseButtons.forEach(button => {
     });
 });
 
-// Close modals when clicking outside
+
 window.addEventListener('click', (e) => {
     if (e.target === loginModal) closeModal(loginModal);
     if (e.target === registerModal) closeModal(registerModal);
 });
 
-// Form handling
+
 loginForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
+
     
-    // Add your authentication logic here
     console.log('Login attempt:', { email, password });
 });
 
@@ -63,12 +63,12 @@ registerForm?.addEventListener('submit', (e) => {
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
     const role = document.getElementById('registerRole').value;
+
     
-    // Add your registration logic here
     console.log('Registration attempt:', { name, email, password, role });
 });
 
-// Smooth scroll for anchor links
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -78,14 +78,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
-            // Close mobile menu if open
+            
             menuToggle?.classList.remove('active');
             mobileMenu?.classList.remove('active');
+            document.body.classList.remove('menu-open');
         }
     });
 });
 
-// Intersection Observer for animations
+
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -100,12 +101,12 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all sections
+
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Search functionality
+
 const searchInputs = document.querySelectorAll('.search-box input');
 const searchButton = document.querySelector('.search-container .btn-primary');
 
@@ -113,31 +114,30 @@ searchButton?.addEventListener('click', () => {
     const [keyword, location, skills] = Array.from(searchInputs).map(input => input.value.trim());
     if (keyword || location || skills) {
         console.log('Searching for:', { keyword, location, skills });
-        // Add your search logic here
+        
     }
 });
 
-// Form validation
+
 searchInputs.forEach(input => {
     input?.addEventListener('input', () => {
         input.classList.toggle('invalid', !input.value.trim());
     });
 });
 
-// Category card hover effects
+
 document.querySelectorAll('.category-card').forEach(card => {
     const image = card.querySelector('.category-image img');
-    
+
     card.addEventListener('mouseenter', () => {
         if (image) image.style.transform = 'scale(1.1)';
     });
-    
+
     card.addEventListener('mouseleave', () => {
         if (image) image.style.transform = 'scale(1)';
     });
 });
 
-// PWA Installation
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -148,20 +148,20 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 installPwaButton?.addEventListener('click', async () => {
     if (!deferredPrompt) return;
-    
+
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    
+
     if (outcome === 'accepted') {
         console.log('PWA installed');
     }
-    
+
     deferredPrompt = null;
 });
 
-// Charts initialization (using Chart.js)
+
 function initializeCharts() {
-    // Sample data for charts
+    
     const sectorData = {
         labels: ['Informatique', 'Business', 'Ingénierie', 'Marketing', 'Autres'],
         data: [30, 25, 20, 15, 10]
@@ -182,9 +182,9 @@ function initializeCharts() {
         data: [100, 40, 20]
     };
 
-    // Initialize charts if Chart.js is loaded
+    
     if (typeof Chart !== 'undefined') {
-        // Sector Chart
+        
         const sectorChart = document.getElementById('sectorChart');
         if (sectorChart) {
             new Chart(sectorChart, {
@@ -209,7 +209,7 @@ function initializeCharts() {
             });
         }
 
-        // Trends Chart
+        
         const trendsChart = document.getElementById('trendsChart');
         if (trendsChart) {
             new Chart(trendsChart, {
@@ -230,7 +230,7 @@ function initializeCharts() {
             });
         }
 
-        // Skills Chart
+        
         const skillsChart = document.getElementById('skillsChart');
         if (skillsChart) {
             new Chart(skillsChart, {
@@ -250,7 +250,7 @@ function initializeCharts() {
             });
         }
 
-        // Conversion Chart
+        
         const conversionChart = document.getElementById('conversionChart');
         if (conversionChart) {
             new Chart(conversionChart, {
@@ -272,15 +272,15 @@ function initializeCharts() {
     }
 }
 
-// Initialize charts when the page loads
+
 document.addEventListener('DOMContentLoaded', initializeCharts);
 
-// Dynamic content loading
+
 function loadLatestOffers() {
     const offersGrid = document.querySelector('.offers-grid');
     if (!offersGrid) return;
 
-    // Sample offer data
+    
     const offers = [
         {
             title: 'Développeur Full Stack',
@@ -290,13 +290,13 @@ function loadLatestOffers() {
             duration: '6 mois',
             skills: ['React', 'Node.js', 'MongoDB']
         },
-        // Add more offers here
+        
     ];
 
-    // Clear existing content
+    
     offersGrid.innerHTML = '';
 
-    // Add offers to the grid
+    
     offers.forEach(offer => {
         const offerCard = document.createElement('div');
         offerCard.className = 'offer-card';
@@ -317,15 +317,15 @@ function loadLatestOffers() {
     });
 }
 
-// Load latest offers when the page loads
+
 document.addEventListener('DOMContentLoaded', loadLatestOffers);
 
-// Load evaluations
+
 function loadEvaluations() {
     const evaluationsGrid = document.querySelector('.evaluations-grid');
     if (!evaluationsGrid) return;
 
-    // Sample evaluation data
+    
     const evaluations = [
         {
             company: 'Tech Solutions',
@@ -334,13 +334,13 @@ function loadEvaluations() {
             author: 'Jean D.',
             date: '2025-02-15'
         },
-        // Add more evaluations here
+        
     ];
 
-    // Clear existing content
+    
     evaluationsGrid.innerHTML = '';
 
-    // Add evaluations to the grid
+    
     evaluations.forEach(evaluation => {
         const evaluationCard = document.createElement('div');
         evaluationCard.className = 'evaluation-card';
@@ -359,5 +359,29 @@ function loadEvaluations() {
     });
 }
 
-// Load evaluations when the page loads
+
 document.addEventListener('DOMContentLoaded', loadEvaluations);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const featureCards = document.querySelectorAll('.feature-card');
+
+    featureCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.gridColumn = '1 / -1';
+            featureCards.forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.style.transform = 'scale(0.9)';
+                    otherCard.style.opacity = '0.7';
+                }
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.gridColumn = 'auto';
+            featureCards.forEach(otherCard => {
+                otherCard.style.transform = 'scale(1)';
+                otherCard.style.opacity = '1';
+            });
+        });
+    });
+});

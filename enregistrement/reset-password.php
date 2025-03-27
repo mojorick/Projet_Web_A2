@@ -42,7 +42,7 @@ if (isset($_GET['token'])) {
                     justify-content: center;
                     align-items: center;
                     height: 100vh;
-                    background-color: #f8f9fa;
+                    background: linear-gradient(90deg,#ffffff ,#93f593);
                 }
                 .reset-container {
                     background: white;
@@ -58,10 +58,23 @@ if (isset($_GET['token'])) {
                 .btn-primary {
                     width: 100%;
                     padding: 10px;
+                    background-color: #158515;
                 }
+
+                .btn-primary:active {
+                    background-color: #158515;
+                }
+
+                .btn-primary:hover {
+                    background-color: #158515;
+                }
+
+
+
+
                 .text-center a {
                     text-decoration: none;
-                    color: #007bff;
+                    color: #158515;
                 }
             </style>
         </head>

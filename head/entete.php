@@ -307,7 +307,7 @@
             <div class="header-content">
                 <div class="logo">
                     <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/graduation-cap.svg" alt="Logo" class="logo-icon">
-                    <span>cesi for me</span>
+                    <span>info for me</span>
                 </div>
                 <nav class="nav-desktop" aria-label="Navigation principale">
                     <div class="nav-group">

@@ -83,8 +83,24 @@
                     <a href="#all-offers" class="btn-secondary">Voir toutes les offres</a>
                 </div>
             </div>
-
             <div class="offers-grid">
+                <div class="offer-card">
+                    <h3>Développeur Full Stack</h3>
+                    <p class="company">Tech Solutions</p>
+                    <p class="location">Paris</p>
+                    <div class="offer-details">
+                        <span>Stage de fin d'études</span>
+                        <span>Durée: 6 mois</span>
+                    </div>
+                    <div class="skills">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                    <button class="btn-primary">Postuler</button>
+                </div>
+            </div>
+            
                 
             </div>
 

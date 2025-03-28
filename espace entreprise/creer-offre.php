@@ -30,11 +30,23 @@
                     <input type="text" id="offerId" name="offerId" required>
                 </div>
                 <div class="form-group">
+                    <label for="offerDescription">Nom de l'entreprise</label>
+                    <textarea id="offerDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="offerDescription">Description de l'entreprise</label>
+                    <textarea id="offerDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="offerDescription">Localisation de l'entreprise</label>
+                    <textarea id="offerDescription" required></textarea>
+                </div>
+                <div class="form-group">
                     <label for="offerTitle">Titre de l'offre</label>
                     <input type="text" id="offerTitle" name="offerTitle" required>
                 </div>
                 <div class="form-group">
-                    <label for="offerDescription">Description</label>
+                    <label for="offerDescription">Description de l'offre</label>
                     <textarea id="offerDescription" name="offerDescription" required></textarea>
                 </div>
                 <div class="form-group">
@@ -43,6 +55,10 @@
                 </div>
                 <div class="form-group">
                     <label for="offerSalary">Base de rémunération</label>
+                    <input type="text" id="offerSalary" name="offerSalary" required>
+                </div>
+                <div class="form-group">
+                    <label for="offerSalary">Télétravail</label>
                     <input type="text" id="offerSalary" name="offerSalary" required>
                 </div>
                 <div class="form-group">

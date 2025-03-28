@@ -321,10 +321,7 @@
                         </div>
                     </div>
                     <div class="nav-group">
-                        <a href="#entreprises" class="nav-link" style="color: black;">Entreprises</a>
-                        <div class="nav-dropdown">
-                            <a href="#liste-entreprises">Liste des entreprises</a>
-                        </div>
+                        <a href="#entreprises" class="nav-link" style="color: black;">Liste des entreprises</a>
                     </div>
                     <div class="nav-group">
                         <a href="#espace-pilote" class="nav-link" style="color: black;">Espace Pilote</a>

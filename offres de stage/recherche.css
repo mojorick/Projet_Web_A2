@@ -16,7 +16,7 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     --radius: 0.5rem;
     --radius-lg: 1rem;
-    --transition: all 0.2s ease-in-out;
+    --transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 * {
@@ -231,8 +231,8 @@ h1 {
 
 .offer-details {
     position: sticky;
-    top: 100px; /* Ajustez à la hauteur exacte de votre header */
-    width: auto;
+    top: 100px;
+    width: 35%;
     height: auto;
     background: var(--white);
     box-shadow: var(--shadow-lg);
@@ -240,71 +240,38 @@ h1 {
     padding: 1.5rem;
     display: none;
     align-self: flex-start;
-    max-height: calc(100vh - 120px); /* Réserve l'espace pour le header */
+    max-height: calc(100vh - 120px);
     overflow-y: auto;
-    margin-bottom: 20px;
-    z-index: 50; /* Plus bas que le header */
-    transition: 2s ease-in-out;
+    margin-left: 2rem;
+    z-index: 50;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: 
+        opacity 0.4s ease-out,
+        transform 0.4s ease-out;
 }
 
 .offer-details.active {
     display: block;
+    opacity: 1;
+    transform: translateX(0);
 }
 
-/* Pour éviter tout chevauchement */
-header {
-    position: relative;
-    z-index: 100; /* Plus élevé que le panneau */
-}
+/* Version mobile */
 
-/* Mobile */
-@media (max-width: 768px) {
-    .offer-details {
-        position: fixed;
-        top: 100px; /* Sous le header */
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        max-height: calc(100vh - 100px);
-        transform: none;
-        margin: 0;
+    @media (max-width: 768px) {
+        .offer-details {
+            position: fixed;
+            top: 100px; /* Sous le header */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-height: calc(100vh - 100px);
+            transform: none;
+            margin: 0;
+        }
     }
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-}
-
-@media (max-width: 768px) {
-    .offer-details {
-        position: fixed;
-        top: 80px; /* Sous le header */
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        max-height: calc(100vh - 80px);
-        z-index: 1001; /* Au-dessus de l'overlay */
-        transform: none;
-        margin: 0;
-        padding: 1rem;
-    }
-
-    .overlay {
-        z-index: 1000; /* Juste en dessous du panneau */
-    }
-
-    .close-btn {
-        z-index: 1002; /* Au-dessus de tout */
-    }
-}
 
 @media (max-width: 480px) {
     .details {

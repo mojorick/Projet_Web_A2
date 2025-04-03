@@ -1,0 +1,3 @@
+<div class="message">
+    ✅ Un email de réinitialisation a été envoyé. Redirection dans 3 secondes...
+</div>

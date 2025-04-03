@@ -1,0 +1,336 @@
+/* Variables spécifiques au header */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --header-primary: #158515;
+    --header-primary-dark: #055c05;
+    --header-primary-light: #1fc81f;
+    --header-text: #1e293b;
+    --header-text-light: #64748b;
+    --header-bg: #ffffff;
+    --header-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --header-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --header-radius: 0.5rem;
+    --header-transition: all 0.2s ease-in-out;
+}
+
+body{
+    font-family: Poppins, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+/* Structure de base */
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--header-bg);
+    box-shadow: var(--header-shadow);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Logo */
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.header__logo-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.header__logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--header-primary);
+}
+
+/* Navigation desktop */
+.header__nav-desktop {
+    display: none;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .header__nav-desktop {
+        display: flex;
+    }
+}
+
+.header__nav-group {
+    position: relative;
+}
+
+.header__nav-link {
+    color: var(--header-text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--header-radius);
+    transition: var(--header-transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header__nav-link:hover {
+    color: var(--header-primary);
+    background-color: rgba(21, 133, 21, 0.1);
+}
+
+.header__nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--header-bg);
+    border-radius: var(--header-radius);
+    box-shadow: var(--header-shadow-lg);
+    padding: 0.5rem;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--header-transition);
+    z-index: 1001;
+}
+
+.header__nav-group:hover .header__nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.header__nav-dropdown a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--header-text);
+    text-decoration: none;
+    border-radius: var(--header-radius);
+    transition: var(--header-transition);
+}
+
+.header__nav-dropdown a:hover {
+    background-color: rgba(21, 133, 21, 0.1);
+    color: var(--header-primary);
+}
+
+/* Suppression générale des soulignements */
+.header-container a,
+.header-container a:hover,
+.header-container a:focus {
+    text-decoration: none !important;
+}
+
+/* Styles spécifiques pour les liens */
+.header__nav-link {
+    color: var(--header-text);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--header-radius);
+    transition: var(--header-transition);
+}
+
+.header__nav-dropdown a {
+    color: var(--header-text);
+    padding: 0.75rem 1rem;
+    border-radius: var(--header-radius);
+}
+
+.header__mobile-link {
+    color: var(--header-text);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Styles de survol */
+.header__nav-link:hover,
+.header__nav-dropdown a:hover,
+.header__mobile-link:hover {
+    color: var(--header-primary);
+    background-color: rgba(21, 133, 21, 0.1);
+}
+
+/* Boutons */
+.header__auth-buttons {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .header__auth-buttons {
+        display: flex;
+    }
+}
+
+.header__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--header-radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--header-transition);
+    cursor: pointer;
+    border: none;
+    font-size: 0.875rem;
+}
+
+.header__btn--primary {
+    background-color: var(--header-primary);
+    color: white;
+}
+
+.header__btn--primary:hover {
+    background-color: var(--header-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--header-shadow);
+    color: white;
+}
+
+/* Menu mobile */
+.header__menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+    .header__menu-toggle {
+        display: none;
+    }
+}
+
+.header__menu-bar {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background-color: var(--header-text);
+    transition: var(--header-transition);
+}
+
+.header__menu-toggle.active .header__menu-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.header__menu-toggle.active .header__menu-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.header__menu-toggle.active .header__menu-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.header__nav-mobile {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--header-bg);
+    padding: 1.5rem;
+    box-shadow: var(--header-shadow-lg);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+.header__nav-mobile.active {
+    display: block;
+}
+
+.header__mobile-section {
+    margin-bottom: 1.5rem;
+}
+
+.header__mobile-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--header-text-light);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.header__mobile-link {
+    display: block;
+    padding: 0.75rem 0;
+    color: var(--header-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--header-transition);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header__mobile-link:hover {
+    color: var(--header-primary);
+    padding-left: 0.5rem;
+}
+
+/* Section auth mobile */
+.header__mobile-auth {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Icônes utilisateur */
+.header__user-icon,
+.header__user-icon--mobile {
+    font-size: 2.5rem;
+    color: var(--header-primary);
+    cursor: pointer;
+    transition: var(--header-transition);
+    flex-shrink: 0;
+}
+
+.header__user-icon:hover,
+.header__user-icon--mobile:hover {
+    transform: skew(2deg) scale(1.1);
+    color: var(--header-primary-light);
+}
+
+a{
+    text-decoration: none;
+}
+
+/* État body quand menu mobile ouvert */
+body.header-mobile-open {
+    overflow: hidden;
+}
+
+       
+/* Ajoutez ceci dans votre section CSS existante */
+#bxs-user-circle, 
+#bxs-user-circle-mobile {
+    transition: var(--transition);
+}
+
+#bxs-user-circle:hover, 
+#bxs-user-circle-mobile:hover {
+    transform: skew(2deg) scale(1.3); /* Effet combiné */
+    color: var(--primary-light); /* Changement de couleur optionnel */
+}

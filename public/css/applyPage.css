@@ -1,0 +1,401 @@
+/* Base Styles */
+body {
+    margin: 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f9f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Layout */
+.apply-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    gap: 2rem;
+}
+
+.apply-container {
+    flex: 2;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apply-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.apply-sidebar {
+    flex: 1;
+}
+
+/* Header */
+.apply-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.apply-header h2 {
+    color: #158515;
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.apply-header h2 .icon {
+    font-size: 1.5rem;
+}
+
+.progress-steps {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.step {
+    padding: 0.5rem 1rem;
+    background: #e8f5e9;
+    border-radius: 20px;
+    color: #2e7d32;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.step.active {
+    background: #c8e6c9;
+    font-weight: 600;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.label-icon {
+    font-size: 1.2rem;
+}
+
+.file-requirements {
+    font-size: 0.85rem;
+    font-weight: normal;
+    color: #666;
+    margin-left: 0.5rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #158515;
+    box-shadow: 0 0 0 2px rgba(21, 133, 21, 0.2);
+}
+
+.char-counter {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.char-counter span {
+    color: #158515;
+    font-weight: 600;
+}
+
+/* File Upload */
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.upload-area {
+    border: 2px dashed #c8e6c9;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f5f9f5;
+}
+
+.upload-area:hover {
+    border-color: #81c784;
+    background-color: #f1f8e9;
+}
+
+.upload-area.dragover {
+    border-color: #158515;
+    background-color: #e8f5e9;
+}
+
+.upload-area svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.upload-area p {
+    margin: 0;
+    color: #555;
+}
+
+.browse-link {
+    color: #158515;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.file-preview {
+    margin-top: 1rem;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f9f5;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+.file-info svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.file-name {
+    font-weight: 500;
+    margin: 0;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-size {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+.remove-file {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #d32f2f;
+    cursor: pointer;
+    padding: 0 0.5rem;
+}
+
+/* Form Footer */
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.cancel-btn, .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.cancel-btn:hover {
+    background: #eeeeee;
+    color: #333;
+}
+
+.cancel-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.submit-btn {
+    background: #158515;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #136613;
+    box-shadow: 0 4px 12px rgba(21, 133, 21, 0.3);
+}
+
+.submit-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Auth Required */
+.auth-required {
+    text-align: center;
+    padding: 2rem;
+}
+
+.auth-icon svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.5rem;
+}
+
+.auth-required h3 {
+    color: #158515;
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
+}
+
+.auth-required p {
+    color: #555;
+    margin: 0 0 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.auth-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: #158515;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+    background: #136613;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(21, 133, 21, 0.3);
+}
+
+/* Sidebar */
+.apply-sidebar {
+    position: sticky;
+    top: 1rem;
+    align-self: flex-start;
+}
+
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+}
+
+.tips-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tips-list li svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 0.1rem;
+}
+
+.contact-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-box h4 {
+    color: #158515;
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+}
+
+.contact-box p {
+    color: #555;
+    margin: 0 0 1.25rem;
+    font-size: 0.95rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #158515;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #0d4d0d;
+    text-decoration: underline;
+}
+
+.contact-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    body{
+        margin-top: 10%;
+    }
+    .apply-wrapper {
+        flex-direction: column;
+    }
+    
+    .apply-sidebar {
+        order: -1;
+        margin-bottom: 2rem;
+        position: static;
+    }
+}

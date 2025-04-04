@@ -1,7 +1,49 @@
+<?php
+session_start();
+
+// Vérifier si l'utilisateur est connecté
+$userLoggedIn = isset($_SESSION['id']);
+
+// Gestion des cookies
+$cookiesAccepted = isset($_COOKIE['cookies_prefs']) ? $_COOKIE['cookies_prefs'] : false;
+
+// Afficher le bandeau cookies seulement si aucun choix n'a été fait
+$showCookieBanner = !isset($_COOKIE['cookies_prefs']);
+
+// Afficher le rappel de connexion seulement si:
+// - L'utilisateur n'est pas connecté
+// - Les cookies ont été acceptés
+// - Le rappel n'a pas été explicitement fermé
+$showLoginReminder = !$userLoggedIn && $cookiesAccepted === 'accepted' && !isset($_COOKIE['login_reminder_closed']);
+
+// Traitement de l'action sur les cookies
+if (isset($_GET['cookie_action'])) {
+    if ($_GET['cookie_action'] === 'accept') {
+        setcookie('cookies_prefs', 'accepted', time() + (86400 * 365), "/");
+    } elseif ($_GET['cookie_action'] === 'reject') {
+        setcookie('cookies_prefs', 'rejected', time() + (86400 * 365), "/");
+    }
+    header('Location: ' . strtok($_SERVER["REQUEST_URI"], '?'));
+    exit;
+}
+
+// Traitement de la fermeture du rappel de connexion
+if (isset($_GET['close_login_reminder'])) {
+    setcookie('login_reminder_closed', 'true', time() + (86400 * 30), "/");
+    header('Location: ' . strtok($_SERVER["REQUEST_URI"], '?'));
+    exit;
+}
+?>
 
 
-
-
+<?php if ($userLoggedIn): ?>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const reminder = document.getElementById('loginReminder');
+    if (reminder) reminder.style.display = 'none';
+});
+</script>
+<?php endif; ?>
 
 <?php require_once("./views/commons/header.php")?>
    <!-- Hero Section -->
@@ -220,4 +262,34 @@
             </div>
         </div>
     </section>
+    <?php if ($showCookieBanner): ?>
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-content">
+        <p>🍪 Nous utilisons des cookies pour améliorer votre expérience.</p>
+        <div class="cookie-buttons">
+            <a href="?cookie_action=accept" class="cookie-button">Accepter</a>
+            <a href="?cookie_action=reject" class="cookie-button secondary">Refuser</a>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
+<?php if ($showLoginReminder): ?>
+<div class="login-reminder-banner" id="loginReminder">
+    <div class="reminder-content">
+        <h3>Boostez votre recherche de stage !</h3>
+        <p>Connectez-vous pour profiter de toutes les fonctionnalités :</p>
+        <ul>
+            <li>✔ Sauvegarder vos offres favorites</li>
+            <li>✔ Postuler en 1 clic</li>
+            <li>✔ Recevoir des recommandations personnalisées</li>
+        </ul>
+        <div class="reminder-buttons">
+            <a href="enregistrement" class="btn-login">Se connecter</a>
+        </div>
+    </div>
+    <button class="close-btn" onclick="closeReminder()">×</button>
+</div>
+<?php endif; ?>
+
     <?php require_once("./views/commons/footer.php")?>

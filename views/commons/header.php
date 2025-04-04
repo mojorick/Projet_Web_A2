@@ -19,7 +19,7 @@
             <div class="header__logo">
                 <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/graduation-cap.svg" 
                     alt="Logo" class="header__logo-icon">
-                <span class="header__logo-text">CESI stage</span>
+                <span class="header__logo-text">stagefinder</span>
             </div>
 
             <nav class="header__nav-desktop" aria-label="Navigation principale">

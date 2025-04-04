@@ -1,81 +1,47 @@
-    // Fonction utilitaire pour vérifier l'état de connexion
-    function isUserLoggedIn() {
-        return document.body.getAttribute('data-logged-in') === 'true';
-    }
 
-    // Fonction pour définir un cookie
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
-    }
-
-    // Fonction pour afficher le cookie banner
-    function showCookieBanner() {
-        if (!isUserLoggedIn() && !document.cookie.includes('cookie_consent=true')) {
-            const banner = document.createElement('div');
-            banner.id = 'cookie-banner';
-            banner.innerHTML = `
-                <div class="cookie-content">
-                    <p>🍪 Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre 
-                    <a href="/politique-cookies">Politique de cookies</a>.</p>
-                    <div class="cookie-buttons">
-                        <button id="accept-cookies" class="btn-primary">Accepter</button>
-                        <button id="decline-cookies" class="btn-secondary">Refuser</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(banner);
-            
-            document.getElementById('accept-cookies').addEventListener('click', () => {
-                setCookie('cookie_consent', 'true', 365);
-                banner.remove();
-                showRegistrationPrompt();
-            });
-            
-            document.getElementById('decline-cookies').addEventListener('click', () => {
-                setCookie('cookie_consent', 'false', 365);
-                banner.remove();
-            });
-        } else if (!isUserLoggedIn() && document.cookie.includes('cookie_consent=true') && !document.cookie.includes('user_registered')) {
-            setTimeout(showRegistrationPrompt, 5000);
-        }
-    }
-
-    // Fonction pour afficher l'invite d'inscription
-    function showRegistrationPrompt() {
-        if (!isUserLoggedIn() && !document.cookie.includes('user_registered') && 
-            !document.cookie.includes('registration_prompt_closed')) {
-            const prompt = document.createElement('div');
-            prompt.id = 'registration-prompt';
-            prompt.innerHTML = `
-                <div class="prompt-content">
-                    <button id="close-prompt" class="close-btn">×</button>
-                    <h3>📝 Complétez votre profil</h3>
-                    <p>Inscrivez-vous avec votre email et votre mot de passe pour sauvegarder vos recherches, postuler plus facilement et recevoir des offres personnalisées.</p>
-                    <div class="prompt-actions">
-                        <a href="enregistrement" class="btn-primary">S'inscrire gratuitement</a>
-                        <p class="login-link">Déjà inscrit ? <a href="connexion">Se connecter</a></p>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(prompt);
-            
-            document.getElementById('close-prompt').addEventListener('click', () => {
-                prompt.remove();
-                setCookie('registration_prompt_closed', 'true', 7);
-            });
-        }
-    }
-
-    // Afficher les éléments au chargement
-    document.addEventListener('DOMContentLoaded', function() {
-        if (!isUserLoggedIn()) {
-            showCookieBanner();
+// Masquer le bandeau quand on accepte/refuse
+document.querySelectorAll('[href*="cookie_action"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const action = this.getAttribute('href').split('=')[1];
+        
+        // Animation de disparition
+        const banner = document.getElementById('cookieBanner');
+        if (banner) {
+            banner.style.animation = 'slideUp 0.5s ease-out reverse';
+            banner.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 500);
+        } else {
+            window.location.href = this.href;
         }
     });
+});
 
+// Réafficher le bandeau depuis l'icône
+document.querySelector('.cookie-reminder')?.addEventListener('click', function() {
+    const banner = document.getElementById('cookieBanner');
+    if (banner) {
+        banner.style.display = 'flex';
+        banner.style.animation = 'slideUp 0.5s ease-out';
+    }
+});
+
+function closeReminder() {
+    const reminder = document.getElementById('loginReminder');
+    if (reminder) {
+        reminder.style.animation = 'slideIn 0.5s ease-out reverse';
+        reminder.style.opacity = '0';
+        setTimeout(() => {
+            reminder.style.display = 'none';
+            // Enregistrer la fermeture du rappel pour 30 jours
+            document.cookie = "login_reminder_closed=true; max-age=2592000; path=/";
+        }, 500);
+    }
+}
+
+// Fermer automatiquement si l'utilisateur se connect
 
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');

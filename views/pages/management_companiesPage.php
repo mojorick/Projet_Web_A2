@@ -150,12 +150,6 @@ $stmt->execute($params ?? []);
 $companies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?php
-    if (session_status() === PHP_SESSION_NONE) session_start();
-    $isLoggedIn = isset($_SESSION['email']);
-    $role = $_SESSION['role'] ?? null;
-?>
-
 <?php require_once("./views/commons/header.php")?>
     <main class="container">
         <div class="page-header">
@@ -179,7 +173,7 @@ $companies = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endif; ?>
             </div>
         </form>
-        <?php if ($isLoggedIn && ($role === 'admin' || $role === 'pilote')): ?>
+        <?php if ($isLoggedIn && $role === 'pilote' || $role === 'admin'): ?>
         <section class="create-company">
             <div id="companyModal" class="modal" style="<?= isset($_GET['edit']) ? 'display: flex;' : 'display: none;' ?>">
                 <div class="modal-content">
@@ -304,9 +298,9 @@ $companies = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         <?php endif; ?>
                     </div>
-                    
+        
                     <div class="company-actions">
-                    <?php if ($isLoggedIn && ($role === 'admin' || $role === 'pilote')): ?>
+                    <?php if ($isLoggedIn && $role === 'pilote' || $role === 'admin'): ?>
                         <a href="?edit=<?= $company['id'] ?>" class="btn btn-edit">
                             <span class="btn-icon">✏️</span> Modifier
                         </a>
@@ -319,7 +313,7 @@ $companies = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </button>
                         </form>
                         <?php endif; ?>
-                        <form method="post" action="./views/components/rate_company.php" style="display: inline-block; width:500px;">
+                        <form method="post" action="./views/components/rate_company.php" style="ddisplay: inline-block; width:500px;">
                             <input type="hidden" name="company_id" value="<?= $company['id'] ?>">
                             <button type="submit" class="btn btn-evaluate">
                                 <span class="btn-icon">⚡</span> Évaluer

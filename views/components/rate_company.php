@@ -1,104 +1,172 @@
 <?php
-require_once(__DIR__.'/../../config/database.php');
+require_once(__DIR__.'/../../config/database.php'); // Chemin corrigé
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Afficher un formulaire simple pour l'évaluation
     if (!isset($_POST['rating'])) {
-        // Afficher le formulaire d'évaluation
         ?>
         <!DOCTYPE html>
         <html>
         <head>
             <title>Évaluer l'entreprise</title>
             <style>
-                body { font-family: Arial, sans-serif; padding: 20px; }
-                .rating-container { text-align: center; }
-                .stars { font-size: 2em; margin: 20px 0; }
-                .star { 
-                    cursor: pointer; 
-                    color: #e0e0e0; 
-                    transition: color 0.2s;
-                    margin: 0 5px;
+                /* Style général */
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background-color: #f5f7fa;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                    color: #333;
                 }
-                .star.selected, 
-                .star:hover, 
-                .star:hover ~ .star {
-                    color: #e0e0e0;
+
+                /* Conteneur principal */
+                .evaluation-container {
+                    background-color: white;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+                    padding: 40px;
+                    width: 100%;
+                    max-width: 500px;
+                    text-align: center;
+                    transition: transform 0.3s ease;
                 }
-                .star.selected, 
-                .star.hover {
-                    color: #ffc107;
+
+                .evaluation-container:hover {
+                    transform: translateY(-5px);
                 }
-                button { 
-                    padding: 10px 20px; 
-                    background: #2e7d32; 
-                    color: white; 
-                    border: none; 
-                    border-radius: 4px; 
+
+                /* Titre */
+                .evaluation-title {
+                    font-size: 24px;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                    color: #2c3e50;
+                }
+
+                .evaluation-subtitle {
+                    font-size: 16px;
+                    color: #7f8c8d;
+                    margin-bottom: 30px;
+                }
+
+                /* Étoiles */
+                .stars-container {
+                    margin: 30px 0;
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                }
+
+                .star {
+                    font-size: 2.5rem;
+                    color: #ddd;
                     cursor: pointer;
-                    font-size: 1rem;
+                    transition: all 0.2s ease;
+                    position: relative;
                 }
-                button:hover {
-                    background: #3e8e41;
+
+                .star:hover {
+                    transform: scale(1.2);
+                }
+
+                .star.selected {
+                    color: #FFD700;
+                }
+
+                .star.selected:before {
+                    content: '★';
+                    position: absolute;
+                    color: rgba(255, 215, 0, 0.4);
+                    transform: scale(1.3);
+                    z-index: -1;
+                }
+
+                /* Bouton */
+                .submit-btn {
+                    background-color: #3498db;
+                    color: white;
+                    border: none;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    border-radius: 50px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-weight: 500;
+                    letter-spacing: 0.5px;
+                    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+                }
+
+                .submit-btn:hover {
+                    background-color: #2980b9;
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+                }
+
+                .submit-btn:active {
+                    transform: translateY(0);
+                }
+
+                /* Animation */
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                    100% { transform: scale(1); }
+                }
+
+                .star.selected {
+                    animation: pulse 0.5s ease;
+                }
+
+                /* Responsive */
+                @media (max-width: 600px) {
+                    .evaluation-container {
+                        padding: 30px 20px;
+                        margin: 20px;
+                    }
+                    
+                    .star {
+                        font-size: 2rem;
+                    }
                 }
             </style>
-            <script>
-                function setRating(rating) {
-                    document.querySelectorAll('.star').forEach((star, index) => {
-                        if (index < rating) {
-                            star.classList.add('selected');
-                        } else {
-                            star.classList.remove('selected');
-                        }
-                    });
-                    document.getElementById('ratingValue').value = rating;
-                }
-            </script>
         </head>
         <body>
-            <div class="rating-container">
-                <h2>Évaluer l'entreprise</h2>
+            <div class="evaluation-container">
+                <h1 class="evaluation-title">Évaluer l'entreprise</h1>
+                <p class="evaluation-subtitle">Sélectionnez votre note en cliquant sur les étoiles</p>
+                
                 <form method="post">
-                    <input type="hidden" name="company_id" value="<?= htmlspecialchars($_POST['company_id']) ?>">
-                    <div class="stars">
+                    <input type="hidden" name="company_id" value="<?= $_POST['company_id'] ?>">
+                    
+                    <div class="stars-container">
                         <?php for ($i = 1; $i <= 5; $i++): ?>
-                            <span class="star" onclick="setRating(<?= $i ?>)">★</span>
+                            <span class="star" 
+                                onclick="document.getElementById('rating').value = <?= $i ?>;
+                                document.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
+                                for (let j = 1; j <= <?= $i ?>; j++) {
+                                    document.querySelector('.star:nth-child(' + j + ')').classList.add('selected');
+                                }">★</span>
                         <?php endfor; ?>
                     </div>
-                    <input type="hidden" id="ratingValue" name="rating" required>
-                    <button type="submit">Soumettre l'évaluation</button>
+                    
+                    <input type="hidden" id="rating" name="rating" required>
+                    <button type="submit" class="submit-btn">Soumettre l'évaluation</button>
                 </form>
             </div>
         </body>
         </html>
         <?php
         exit();
-    } else {
-        // Traitement de l'évaluation
-        try {
-            $rating = floatval($_POST['rating']);
-            
-            // Validation de la note (doit être entre 1 et 5)
-            if ($rating < 1 || $rating > 5) {
-                die("La note doit être comprise entre 1 et 5");
-            }
-            
-            $stmt = $pdo->prepare("INSERT INTO company_ratings (company_id, rating) VALUES (?, ?)");
-            $stmt->execute([
-                $_POST['company_id'],
-                $rating
-            ]);
-            
-            // Redirection vers la page de gestion
-            header("Location: ../../Gestion_des_entreprises");
-            exit();
-            
-        } catch (PDOException $e) {
-            die("Erreur lors de l'évaluation : " . $e->getMessage());
-        }
     }
-} else {
-    // Si l'utilisateur arrive directement sur cette page sans POST
+
+    // Traitement de l'évaluation
+    $stmt = $pdo->prepare("INSERT INTO company_ratings (company_id, rating) VALUES (?, ?)");
+    $stmt->execute([$_POST['company_id'], $_POST['rating']]);
+    
     header("Location: ../../Gestion_des_entreprises");
     exit();
 }
-?>

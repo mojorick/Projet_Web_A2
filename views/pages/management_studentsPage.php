@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $studentModel->deleteStudent($_POST['id']);
                     break;
             }
-            header("Location: ".$_SERVER['PHP_SELF']);
+            header("Location: Gestion_des_etudiants");
             exit();
         } catch (Exception $e) {
             $error = "Une erreur est survenue : " . $e->getMessage();
@@ -155,24 +155,24 @@ $students = $studentModel->getAllStudents($search);
                                     <td><?= htmlspecialchars($student['email']) ?></td>
                                     <td><?= htmlspecialchars($student['domaine'] ?? 'Non spécifié') ?></td>
                                     <td>
-                                        <a href="?edit=<?= $student['id'] ?>" class="action-btn edit-btn">
+                                        <a href="?edit=<?= $student['id'] ?>" class="action-btn edit-btn" style="width: 140px;">
                                             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                             </svg>
                                             Modifier
                                         </a>
-                                        <form method="post" style="display: inline;">
+                                        <form method="post" style="display: inline-block; margin: 2.5%; margin-left: 1%;">
                                             <input type="hidden" name="action" value="delete">
                                             <input type="hidden" name="id" value="<?= $student['id'] ?>">
                                             <button type="submit" class="action-btn delete-btn" 
-                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')">
+                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')" >
                                                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                 </svg>
                                                 Supprimer
                                             </button>
                                         </form>
-                                        <a href="?view_stats=<?= $student['id'] ?>" class="action-btn stats-btn">
+                                        <a href="?view_stats=<?= $student['id'] ?>" class="action-btn stats-btn" style="width: 140px;">
                                             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                             </svg>

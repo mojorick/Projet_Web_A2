@@ -1,11 +1,11 @@
 <?php
 require_once(__DIR__ . "/PdoModel.php");
 
-session_start();
-
 class Login extends PdoModel {
 
     public function connexion() {
+        session_start();
+
         if (isset($_POST['ok'])) {
             if (!empty($_POST['email']) && !empty($_POST['password'])) {
                 $email = trim($_POST['email']);
@@ -13,37 +13,39 @@ class Login extends PdoModel {
 
                 try {
                     $db = $this->setDB();
-                    $request = $db->prepare("SELECT * FROM utilisateurs WHERE email = :email");
+
+                    $request = $db->prepare("SELECT * FROM utilisateurs WHERE email = :email AND role = 'etudiant'");
                     $request->execute([':email' => $email]);
+
                     $user = $request->fetch(PDO::FETCH_ASSOC);
 
                     if ($user && password_verify($password, $user['password'])) {
-                        $_SESSION['id'] = $user['id'];
+                        // Stockage de toutes les informations nécessaires dans la session
+                        $_SESSION['id'] = $user['id']; // Ajout de l'ID utilisateur
                         $_SESSION['email'] = $user['email'];
                         $_SESSION['role'] = $user['role'];
                         $_SESSION['nom'] = $user['nom'];
                         $_SESSION['prenom'] = $user['prenom'];
 
-                        // Supprimer les cookies d'inscription
-                        setcookie('user_registered', '', time() - 3600, '/');
-                        setcookie('registration_prompt_closed', '', time() - 3600, '/');
+                        // Log pour déboguer
+                        error_log("Connexion réussie - ID utilisateur: " . $user['id']);
                         
-                        header("Location: ./../");
+                        header("Location: ./../"); // Redirige après connexion
                         exit();
                     } else {
                         $_SESSION['error'] = "Email ou mot de passe incorrect";
-                        header("Location: login.php?error=1");
+                        header("Location: errorPage.php"); 
                         exit();
                     }
                 } catch (PDOException $e) {
-                    error_log("Erreur de connexion: " . $e->getMessage());
-                    $_SESSION['error'] = "Une erreur est survenue";
-                    header("Location: login.php?error=2");
+                    error_log("Erreur de connexion : " . $e->getMessage());
+                    $_SESSION['error'] = "Une erreur est survenue lors de la connexion";
+                    header("Location: errorPage.php");
                     exit();
                 }
             } else {
                 $_SESSION['error'] = "Veuillez remplir tous les champs";
-                header("Location: login.php?error=3");
+                header("Location: errorPage.php");
                 exit();
             }
         }

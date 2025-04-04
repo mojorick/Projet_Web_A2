@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // Vérifier si l'utilisateur est connecté
 $userLoggedIn = isset($_SESSION['id']);

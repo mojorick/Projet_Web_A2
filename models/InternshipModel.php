@@ -228,6 +228,61 @@ class InternshipModel extends PdoModel {
             return false;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function getAvailableInternships() {
+        $pdo = $this->setDB();
+        $query = "SELECT i.*, c.name AS company_name 
+                 FROM internships i
+                 LEFT JOIN companies c ON i.company_id = c.id
+                 ORDER BY i.posted_at DESC";
+        $stmt = $pdo->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function getUserWishlist($user_id) {
+        $pdo = $this->setDB();
+        $query = "SELECT i.*, c.name AS company_name 
+                 FROM user_wishlist w
+                 JOIN internships i ON w.internship_id = i.id
+                 LEFT JOIN companies c ON i.company_id = c.id
+                 WHERE w.user_id = :user_id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function addToWishlist($user_id, $internship_id) {
+        $pdo = $this->setDB();
+        $query = "INSERT INTO user_wishlist (user_id, internship_id) 
+                  VALUES (:user_id, :internship_id)";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':internship_id', $internship_id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+    
+    public function removeFromWishlist($user_id, $internship_id) {
+        $pdo = $this->setDB();
+        $query = "DELETE FROM user_wishlist 
+                  WHERE user_id = :user_id AND internship_id = :internship_id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':internship_id', $internship_id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }
 
 

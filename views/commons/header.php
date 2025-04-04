@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/css/header.css">
 </head>
-<body>
+<body data-logged-in="<?= isset($_SESSION['id']) ? 'true' : 'false' ?>">
     <header class="header">
     <?php
     if (session_status() === PHP_SESSION_NONE) session_start();
@@ -33,9 +33,6 @@
                         <a href="Recherche_de_stage">Rechercher une offre</a>
                         <a href="statistique_des_offres_de_stage">Statistiques</a>
                     </div>
-                </div>
-                <div class="header__nav-group">
-                    <a href="Recherche_de_stage" class="header__nav-link">Liste des entreprises</a>
                 </div>
 
                 <?php if ($isLoggedIn && $role === 'pilote'): ?>

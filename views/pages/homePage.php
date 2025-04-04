@@ -1,3 +1,8 @@
+
+
+
+
+
 <?php require_once("./views/commons/header.php")?>
    <!-- Hero Section -->
      <section class="hero">

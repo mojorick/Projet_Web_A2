@@ -2,7 +2,7 @@
     <style>
         /* Footer */
         .footer {
-            padding: 4rem 0;
+            padding: 2rem 0;
             background:rgb(1, 42, 1);
             color: var(--white);
             border-radius: 20px/15px;
@@ -39,7 +39,7 @@
 
         .footer-links h4 {
             font-size: 1.125rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .footer-links ul {
@@ -137,23 +137,10 @@
         <div class="container">
             <div class="footer-grid" style="text-align: center;">
                 <div class="footer-links">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="../accueil/accueil.php">Accueil</a></li>
-                        <li><a href="#">Offres de stage</a></li>
-                        <li><a href="#">Entreprises</a></li>
-                        <li><a href="#">Espace étudiant</a></li>
-                        <li><a href="#">Espace Entreprises</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
                     <h4>Ressources</h4>
-                    <ul>
-                        <li><a href="#">Centre d'aide</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
+                      
+                        <a href="#">Contact</a>
+                    
                 </div>
                 <div class="footer-links">
                     <h4>Légal</h4>
@@ -161,13 +148,12 @@
                         <li><a href="#">Mentions légales</a></li>
                         <li><a href="#">Politique de confidentialité</a></li>
                         <li><a href="#">CGU</a></li>
-                        <li><a href="#">Accessibilité</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 CESI Stages. Tous droits réservés.</p>
-                <p>Version 2.0.0 - Dernière mise à jour : 01/03/2025</p>
+                <p>© 2025 StageFinder. Tous droits réservés.</p>
+                <p>Version 2.0.0 - Dernière mise à jour : 04/04/2025</p>
             </div>
         </div>
-    </footer>
+</footer>

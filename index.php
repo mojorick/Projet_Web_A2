@@ -11,12 +11,14 @@ require_once("./controllers/ForgotController.php");
 require_once("./controllers/CompanyController.php");
 require_once("./controllers/ApplyController.php"); 
 require_once("./controllers/StudentController.php");
+require_once("./controllers/CandidatureController.php");
 
 $mainController = new MainController();
 $forgotController = new ForgotController();
 $companyController = new CompanyController();
 $applyController = new ApplyController(); 
 $StudentController = new StudentController();
+$candidatureController = new CandidatureController(); // Notez le changement de nom de variable
 
 try {
     if(empty($_GET['page'])){
@@ -102,7 +104,10 @@ try {
         case 'Gestion_des_etudiants':
             $StudentController->management_studentsPage();
         break;
-            
+
+        case 'Gestion_des_candidatures':
+                $candidatureController->management_candidaturePage();
+        break;
         default:
             throw new Exception("La page demandée n'existe pas");
     }

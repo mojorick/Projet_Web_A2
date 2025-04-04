@@ -1,3 +1,82 @@
+    // Fonction utilitaire pour vérifier l'état de connexion
+    function isUserLoggedIn() {
+        return document.body.getAttribute('data-logged-in') === 'true';
+    }
+
+    // Fonction pour définir un cookie
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+    }
+
+    // Fonction pour afficher le cookie banner
+    function showCookieBanner() {
+        if (!isUserLoggedIn() && !document.cookie.includes('cookie_consent=true')) {
+            const banner = document.createElement('div');
+            banner.id = 'cookie-banner';
+            banner.innerHTML = `
+                <div class="cookie-content">
+                    <p>🍪 Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre 
+                    <a href="/politique-cookies">Politique de cookies</a>.</p>
+                    <div class="cookie-buttons">
+                        <button id="accept-cookies" class="btn-primary">Accepter</button>
+                        <button id="decline-cookies" class="btn-secondary">Refuser</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(banner);
+            
+            document.getElementById('accept-cookies').addEventListener('click', () => {
+                setCookie('cookie_consent', 'true', 365);
+                banner.remove();
+                showRegistrationPrompt();
+            });
+            
+            document.getElementById('decline-cookies').addEventListener('click', () => {
+                setCookie('cookie_consent', 'false', 365);
+                banner.remove();
+            });
+        } else if (!isUserLoggedIn() && document.cookie.includes('cookie_consent=true') && !document.cookie.includes('user_registered')) {
+            setTimeout(showRegistrationPrompt, 5000);
+        }
+    }
+
+    // Fonction pour afficher l'invite d'inscription
+    function showRegistrationPrompt() {
+        if (!isUserLoggedIn() && !document.cookie.includes('user_registered') && 
+            !document.cookie.includes('registration_prompt_closed')) {
+            const prompt = document.createElement('div');
+            prompt.id = 'registration-prompt';
+            prompt.innerHTML = `
+                <div class="prompt-content">
+                    <button id="close-prompt" class="close-btn">×</button>
+                    <h3>📝 Complétez votre profil</h3>
+                    <p>Inscrivez-vous avec votre email et votre mot de passe pour sauvegarder vos recherches, postuler plus facilement et recevoir des offres personnalisées.</p>
+                    <div class="prompt-actions">
+                        <a href="enregistrement" class="btn-primary">S'inscrire gratuitement</a>
+                        <p class="login-link">Déjà inscrit ? <a href="connexion">Se connecter</a></p>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(prompt);
+            
+            document.getElementById('close-prompt').addEventListener('click', () => {
+                prompt.remove();
+                setCookie('registration_prompt_closed', 'true', 7);
+            });
+        }
+    }
+
+    // Afficher les éléments au chargement
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!isUserLoggedIn()) {
+            showCookieBanner();
+        }
+    });
+
+
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 const loginBtn = document.getElementById('loginBtn');

@@ -300,38 +300,38 @@ Les relations entre les tables indiquent les liens entre les différents éléme
 ## Mock-up
 ### Page d'accueil
 #### Invité
-
+voir le depot ayant pour branche projet_web_mvc
 
 
 #### Administrateur
-
+voir le depot ayant pour branche projet_web_mvc
 
 #### Pilote
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 #### Étudiant
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 ### Page de connexion
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 Pour la page de connexion, nous aurons un champs texte pour l’adresse mail de l’utilisateur et pour le mot de passe, le bouton “valider” pour se connecter et deux liens vers la page d’inscription ou vers une page de récupération de mot de passe.
 Pour la récupération de mot de passe, nous enverrons un code à l’adresse mail de l’utilisateur et de taper après le nouveau mot de passe.
 
 ### Page d'enregistrement
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 ### Page de recherche
-
+voir le depot ayant pour branche projet_web_mvc
 #### Invité
+voir le depot ayant pour branche projet_web_mvc
 
 
-
-Pour la page de recherche de stage, alternance…. Nous aurons un champs texte pour saisir les mots clés liés à la recherche, le lieu de travail ,un bouton chercher qui lance la recherche et des dropdowns des listes avec différents filtres comme domaine, durée contrat ,type et plus de filtres.
+Pour la page de recherche de stage. Nous aurons un champs texte pour saisir les mots clés liés à la recherche, le lieu de travail ,un bouton chercher qui lance la recherche et des dropdowns des listes avec différents filtres comme domaine, durée contrat ,type et plus de filtres.
 
 
 
@@ -341,51 +341,51 @@ Et nous pouvons trier la liste des résultats par les plus récent, les plus anc
 
 #### Pilote
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 #### Étudiant
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 ### Page d'une entreprise
 
 #### Invité
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 #### Pilote
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 #### Étudiant
 
 
-
+voir le depot ayant pour branche projet_web_mvc
 ### Page d'une offre
 #### Invité
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 #### Administrateur
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 #### Pilote
 
 
-
+voir le depot ayant pour branche projet_web_mvc
 #### Étudiant
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 ### Page d'utilisateur
 #### Page d'élève
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 Dans cette page nous allons afficher le profil d’un étudiant.
-Sur cette page nous allons afficher les informations de celui-ci (nom, prénom, centre, promotion) ainsi que son avatar dans une bannière prévu pour ceux-ci.
-Les compétences sont affichées en dessous des informations l’utilisateurs pourra rajouter ses compétences dans le pop-up « modifier ».
+Sur cette page nous allons afficher les informations de celui-ci (nom, prénom, centre, domaine) ainsi que son avatar dans une bannière prévu pour ceux-ci.
+Les compétences sont affichées en dessous des informations l’utilisateurs pourra rajouter ses compétence dans le pop-up « modifier ».
 Pour accéder aux compétences en détails de l’utilisateur un bouton voir plus est à disposition pour afficher toutes les compétences de l’étudiant.
 Dans la bannière en haut de la page nous retrouvons un bouton modifier afin que l’utilisateur puisse modifier toutes informations. Un pop-up apparaitra quand nous cliquerons sur le bouton comme ci-dessous : 
 
@@ -395,12 +395,11 @@ L’utilisateur pourra rajouter des compétences via le menu déroulant.
 
 
 
-Dans le pop-up, l’utilisateur pourra aussi supprimer son compte avec un bouton rouge en bas à gauche.
 Ensuite dans les corps de la page nous allons afficher sa wish-list et les offres auxquelles il a candidaté. Il y aura un système de pagination pour la wish-list et les offres candidatées.
 
 #### Page de pilote
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 Cette page est le profil d’un pilote visible par le pilote lui-même (il y a un bouton pour modifier le profil en plus par rapport à la vue des autres utilisateurs).
 Nous pouvons y retrouver une bannière avec différentes informations sur le pilote comme son nom, prénom ou son lieu de travail. 
@@ -411,7 +410,7 @@ Dans la bannière en haut de la page nous retrouverons les informations du pilot
 ### Page d'administration
 #### Utilisateurs
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 Cette page et ses nombreuses fenêtres permet à un pilote de gérer les étudiants et à un administrateur de gérer les pilotes et les étudiants.
 Le pilote/administrateur peut :
@@ -422,7 +421,7 @@ Le pilote/administrateur peut :
 
 #### Entreprises
 
-
+voir le depot ayant pour branche projet_web_mvc
 
 Cette page et ses nombreuses fenêtres permet à un pilote et un administrateur de gérer les entreprises.
 Le pilote/administrateur peut :
@@ -435,15 +434,15 @@ Le pilote/administrateur peut :
 
 Page d'accueil : 
 
-
+voir le depot ayant pour branche projet_web_mvc
 Page de recherche : 
-
+voir le depot ayant pour branche projet_web_mvc
 
 Page de connexion : 
-
+voir le depot ayant pour branche projet_web_mvc
 
 Page d'enregistrement :
 
-
+voir le depot ayant pour branche projet_web_mvc
 Page d'une offre : 
-
+voir le depot ayant pour branche projet_web_mvc

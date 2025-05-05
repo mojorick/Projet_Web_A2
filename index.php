@@ -1,7 +1,22 @@
 <?php
 
+<?php
+// Rapporter toutes les erreurs
 error_reporting(E_ALL);
+
+// Afficher les erreurs à l'écran
 ini_set('display_errors', 1);
+
+// Activer la journalisation des erreurs
+ini_set('log_errors', 1);
+
+// Spécifier le fichier de log (à adapter selon ton système)
+ini_set('error_log', __DIR__ . '/php_error.log');
+
+// Exemple d'erreur pour test
+// echo $undefined_variable;
+?>
+
 
 session_start();
 define("ROOT", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF']));

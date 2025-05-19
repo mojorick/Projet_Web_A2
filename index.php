@@ -1,6 +1,6 @@
 <?php
 
-<?php
+
 // Rapporter toutes les erreurs
 error_reporting(E_ALL);
 
@@ -15,7 +15,7 @@ ini_set('error_log', __DIR__ . '/php_error.log');
 
 // Exemple d'erreur pour test
 // echo $undefined_variable;
-?>
+
 
 
 session_start();
